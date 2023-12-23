@@ -1,34 +1,42 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [gameRunning, setGameRunning] = useState(false)
+
+  /* Challenge
+  
+    You're creating a button that will allow the user to play and pause a video game. Your task is to set it up and insert it in the div below (line 29) as follows: 
+            
+        1. The button should receive a class name of "video-game-button"
+        
+        2. When the user clicks the button, the gameRunning state's boolean value should be set to 
+           the opposite value of what it currently is (from true to false or vice-versa).
+            
+        3. If gameRunning is true, the button should display the word "Pause". If gameRunning is 
+           false, the button should display the word "Play". In other words:
+          
+             ┌─────────────┐     ------------>     ┌─────────────┐            
+             │     Play    │         click         │    Pause    │
+             └─────────────┘     <------------     └─────────────┘
+           gameRunning = false                    gameRunning = true 
+             (game is paused)                      (game is playing)
+             
+        4. If you complete these tasks correctly, the button should have some nice visual effects 
+           when you click it, and the workshop background should be automatically replaced by a light blue background.
+*/
+
+  function handleClick() {
+    setGameRunning(!gameRunning)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <button onClick={handleClick} className="video-game-button">
+        {gameRunning ? 'Pause' : 'Play'}
+      </button>
+    </div>
   )
 }
 
